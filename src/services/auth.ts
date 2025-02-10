@@ -17,7 +17,7 @@ const handleError = (error: any) => {
     if (error.response?.status === 401) {
         console.log('Unauthorized access, redirecting to login');
         authApi.logout();
-        window.location.href = '/auth';
+        window.location.href = '/login';
     }
     throw error;
 };
@@ -26,7 +26,7 @@ export const authApi = {
     login: async (email: string, password: string) => {
         try {
             console.log('Attempting login for:', email);
-            const response = await axios.post('/auth/login', 
+            const response = await axios.post('/login', 
                 { email, password },
                 {
                     headers: {
@@ -49,7 +49,7 @@ export const authApi = {
     register: async (email: string, password: string) => {
         try {
             console.log('Attempting registration for:', email);
-            const response = await axios.post('/auth/register', 
+            const response = await axios.post('/register', 
                 { email, password },
                 {
                     headers: {
