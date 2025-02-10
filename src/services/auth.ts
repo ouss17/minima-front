@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { log } from 'console';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL + '/api';
 
@@ -26,6 +27,8 @@ export const authApi = {
     login: async (email: string, password: string) => {
         try {
             console.log('Attempting login for:', email);
+            console.log('Password:', password);
+            
             const response = await axios.post('/login', 
                 { email, password },
                 {
